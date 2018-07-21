@@ -1,0 +1,11 @@
+body {
+  background: rgb(255, 246, 167);
+  display: flex;
+}
+
+a {
+  color: aqua;
+  & span {
+    color: white;
+  }
+}
