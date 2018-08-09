@@ -1,78 +1,51 @@
 "use strict";
-var carousel;
-var carouselInner;
-var carouselItems;
 
-var activeItemNum;                                  
-var prev;                                          
-var next;
+function СreateCarousel(elem) {
+  var carousel = document.getElementById(elem);
+  var carouselInner = carousel.querySelector('.carouselCustom-inner');  
+  var carouselItems = carousel.querySelectorAll('.carouselCustom-item');
 
-function createCarousel(id) {
-  carousel = document.querySelector(id);
-  carouselItems = carousel.querySelectorAll('.carouselCustom-item');
-
-  activeItemNum = 1;                                      //1
-  prev = activeItemNum - 1 ;                              //0
-  next = activeItemNum + 1;                               //2
+  var activeItemNum = 1;                                      //1
+  var prev = activeItemNum - 1 ;                              //0
+  var next = activeItemNum + 1;                               //2
   carouselItems[prev].classList.add('prev');
   carouselItems[next].classList.add('next');
   
-  carousel.addEventListener("click", moveCarousel, false);
+  this.nextItem = function() {
+    carouselInner.appendChild(carouselItems[0]);
+    carouselItems = carousel.querySelectorAll('.carouselCustom-item');    //refresh collection   
+  };
+
+  this.prevItem = function() {
+    var last = carouselItems.length - 1 ;
+    carouselInner.insertBefore(carouselItems[last], carouselInner.firstChild);
+    carouselItems = carousel.querySelectorAll('.carouselCustom-item');     //refresh collection  
+  };
+
+  this.cleanUpClasses = function() {
+    for (let i = 0; i < carouselItems.length; i++) {                         // remove all added classes
+      carouselItems[i].classList.remove('prev','active','next'); 
+    }
+  }
+  
+  this.setUpClasses = function() {
+    carouselItems[prev].classList.add('prev');                             // добавляем текущие классы
+    carouselItems[next].classList.add('next');
+    carouselItems[activeItemNum].classList.add('active');
+  }
+  
+  var self = this;
+  
+  carousel.onclick = function(e) {
+    var target = e.target;
+    var action = target.getAttribute('data-action');
+    if (action) {
+      self.cleanUpClasses();                                   
+      self[action]();
+      self.setUpClasses();
+    }
+  }; 
 } 
 
-
-function moveCarousel(e) {
-  if (e.target.nodeName === "BUTTON") {
-    var button = e.target; 
-    if (button.classList.contains('carouselCustom-controll-prev')) {
-      carouselPrev(button.parentElement);
-    } else if (button.classList.contains('carouselCustom-controll-next')) {
-      carouselNext(button.parentElement);
-    }
-    
-  }
-}
-
-
-function carouselNext(carousel) {
-  carouselInner = carousel.querySelector('.carouselCustom-inner');
-  carouselItems = carousel.querySelectorAll('.carouselCustom-item');
-
-  cleanUpClasses(carouselItems);
-
-  carouselInner.appendChild(carouselItems[0]);
- 
-  carouselItems = carousel.querySelectorAll('.carouselCustom-item');       //как нормально обновить коллекцию
-
-
-  carouselItems[prev].classList.add('prev');                             // добавляем текущие классы
-  carouselItems[next].classList.add('next');
-  carouselItems[activeItemNum].classList.add('active');
-
-}
-function cleanUpClasses(elems) {
-  for (let i = 0; i < elems.length; i++) {                         // remove all added classes
-    elems[i].classList.remove('prev','active','next'); 
-  }
-}
-function carouselPrev(carousel) {
-  
-  carouselInner = carousel.querySelector('.carouselCustom-inner');
-  carouselItems = carousel.querySelectorAll('.carouselCustom-item');
-  
-  cleanUpClasses(carouselItems);
-
-  var last = carouselItems.length - 1 ;
-  carouselInner.insertBefore(carouselItems[last], carouselInner.firstChild);
- 
-  carouselItems = carousel.querySelectorAll('.carouselCustom-item');     //как нормально обновить коллекцию 
-                                                                        //Возвращает non-live NodeList всех соотв. узлов элемента.
-  carouselItems[prev].classList.add('prev');                             // добавляем текущие классы
-  carouselItems[next].classList.add('next');
-  carouselItems[activeItemNum].classList.add('active');
-}
-
-createCarousel('#myCarousel');
-createCarousel('#myCarousel1');
-
-
+var myCarousel = new СreateCarousel('myCarousel');
+var myCarousel1 = new СreateCarousel('myCarousel1');
