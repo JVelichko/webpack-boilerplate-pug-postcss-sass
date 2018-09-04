@@ -1,0 +1,21 @@
+.carouselCustom {
+  position: relative;
+
+  &-inner {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-item {
+    flex-direction: row;
+    display: none;
+  }
+
+  &-item.active, &-item.prev, &-item.next {
+    display: flex;
+    //background: red;
+  }
+}
