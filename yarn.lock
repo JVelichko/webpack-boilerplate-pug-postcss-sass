@@ -2,6 +2,12 @@
 # yarn lockfile v1
 
 
+"@ionic/core@^4.0.0-beta.7":
+  version "4.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@ionic/core/-/core-4.0.0-beta.7.tgz#abdc47d4a738796c1576bc33e065beb07d2644dd"
+  dependencies:
+    ionicons "4.4.3"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -12,6 +18,12 @@
 "@nodelib/fs.stat@^1.0.1":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
+
+"@stencil/webpack@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@stencil/webpack/-/webpack-0.0.6.tgz#bf90e7351eda81e60952550aeaa1d3627865f7e1"
+  dependencies:
+    typescript "^2.6.2"
 
 abbrev@1:
   version "1.1.0"
@@ -3054,6 +3066,10 @@ invariant@^2.2.0:
 invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
+
+ionicons@4.4.3:
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/ionicons/-/ionicons-4.4.3.tgz#18f09b8277757721ceeb59b0ffb9d35e32c6fbb8"
 
 ip@^1.1.0:
   version "1.1.5"
@@ -6463,7 +6479,7 @@ type-is@~1.6.15:
     media-typer "0.3.0"
     mime-types "~2.1.15"
 
-typescript@^2.9.2:
+typescript@^2.6.2, typescript@^2.9.2:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 

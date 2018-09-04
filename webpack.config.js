@@ -1,14 +1,18 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const stencil = require('@stencil/webpack');
 const path = require('path');
 
 module.exports = {
   context: path.join(__dirname, '/app'),
-
-  entry: './app.js',
+  
+  entry: {
+    study : './study.js',
+    index : './app.js',
+  },
 
   output: {
     path: path.join(__dirname, '/build'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
   },
 
   module: {
@@ -51,10 +55,20 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      filename: 'study.html',
+      chunks: ['study'],
+      // favicon: 'favicon.ico',
+      template: path.join(__dirname, '/app/pug/greater.pug'),
+      title: 'Page Title',
+    }),
+    new HtmlWebpackPlugin({
+      //inject: false,
       filename: 'index.html',
+      chunks: ['index'],
       // favicon: 'favicon.ico',
       template: path.join(__dirname, '/app/pug/index.pug'),
       title: 'Page Title',
     }),
+    new stencil.StencilPlugin(), 
   ],
 };
