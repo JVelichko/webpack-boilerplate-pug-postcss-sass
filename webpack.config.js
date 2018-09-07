@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     study : './study.js',
     index : './app.js',
+    stripe : './stripe.js',
   },
 
   output: {
@@ -67,6 +68,14 @@ module.exports = {
       chunks: ['index'],
       // favicon: 'favicon.ico',
       template: path.join(__dirname, '/app/pug/index.pug'),
+      title: 'Page Title',
+    }),
+    new HtmlWebpackPlugin({
+      //inject: false,
+      filename: 'stripe.html',
+      chunks: ['stripe'],
+      // favicon: 'favicon.ico',
+      template: path.join(__dirname, '/app/pug/stripe.pug'),
       title: 'Page Title',
     }),
     new stencil.StencilPlugin(), 

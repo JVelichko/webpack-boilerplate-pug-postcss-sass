@@ -1,0 +1,85 @@
+body {
+  position: relative;
+  max-width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  max-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+}
+
+#statusStripe {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.stripe {
+  position: relative;
+  flex: 1 1 auto;
+  text-align: center;
+  border-bottom: solid 2px;
+}
+
+.stripe::after {
+  position: absolute;
+  border: solid 2px white;
+  height: 10px;
+  width: 10px;
+  content: "";
+  border-radius: 100%;
+  z-index: 1;
+}
+
+.pastStripe {
+  color: greenyellow;
+}
+
+.pastStripe::after {
+  background: greenyellow;
+  bottom: -7px;
+  left: -7px;
+}
+
+.currentStripe {
+  color: orange;
+}
+
+.currentStripe::before {
+  position: absolute;
+  border: solid 2px white;
+  height: 10px;
+  width: 10px;
+  content: "";
+  border-radius: 100%;
+  background: orange;
+  bottom: -7px;
+  left: -7px;
+}
+
+.currentStripe::after {
+  background: orange;
+  bottom: -7px;
+  right: -7px;
+}
+
+.futureStripe {
+  color: grey;
+}
+
+.futureStripe::after {
+  background: grey;
+  bottom: -7px;
+  right: -7px;
+}
+
+.stripeText {
+  margin-bottom: 10px;
+  color: grey;
+}
