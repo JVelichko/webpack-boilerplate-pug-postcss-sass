@@ -83,3 +83,62 @@ body {
   margin-bottom: 10px;
   color: grey;
 }
+
+/* Step timeline */
+
+.timeline-step {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  height: 14px;
+  margin: 0;
+  align-items: center;
+  padding: 80px 50px 0 50px;
+  box-sizing: border-box;
+
+  & .step {
+    max-width: 14px;
+    height: 14px;
+    flex: 1 1 auto;
+    border-radius: 50%;
+    border: 3px solid #fff;
+  }
+
+  & .line {
+    background-color: #e5e5e5;
+    flex-grow: 1;
+    height: 2px;
+  }
+
+  & .past {
+    background-color: #4ea31e;
+  }
+
+  & .current {
+    background-color: #f49530;
+  }
+
+  & .step.future {
+    background-color: #fff;
+    box-shadow: 0 0 0 3px #e5e5e5 inset;
+  }
+
+  & .line.future {
+    background-color: #e5e5e5;
+  }
+}
+
+/* Note */
+
+p {
+  display: block;
+  width: 260px;
+  height: 40px;
+  line-height: 40px;
+  margin: 30px auto;
+  text-align: center;
+  font-family: sans-serif;
+  color: #fff;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
